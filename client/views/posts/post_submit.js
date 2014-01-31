@@ -37,10 +37,10 @@ Template.post_submit.events({
       return false;
     }
 
-    var title= $('#title').val();
+    var question= $('#question').val();
     var url = $('#url').val();
     var shortUrl = $('#short-url').val();
-    var body = instance.editor.exportFile();
+    var body = $('#body').val();;
     var categories=[];
     var sticky=!!$('#sticky').attr('checked');
     var submitted = $('#submitted_hidden').val();
@@ -52,7 +52,7 @@ Template.post_submit.events({
      });
 
     var properties = {
-        headline: title
+        headline: question
       , body: body
       , shortUrl: shortUrl
       , categories: categories
@@ -98,6 +98,15 @@ Template.post_submit.events({
       alert("Please fill in an URL first!");
       $(".get-title-link").removeClass("loading");
     }
-  }
+  },
 
+  'click #getans': function(e){
+    e.preventDefault();
+    var question= $('#question').val();
+    var body = $('#body').val();;
+    Meteor.call('getans', question, function(err, res) {
+          $('#body').val(res);
+          body = res;
+    });
+  }
 });

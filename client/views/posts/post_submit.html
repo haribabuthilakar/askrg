@@ -2,24 +2,24 @@
   <div class="grid submit">
     <form class="grid-block form-horizontal">
       {{#constant}}
-      <div class="control-group">
+      <div class="control-group hidden">
         <label class="control-label">{{i18n "URL"}}</label>
         <div class="controls"><input id="url" type="text" value="" /></div>
       </div>
       <div class="control-group">
-        <label class="control-label">{{i18n "Title"}}</label>
-        <div class="controls"><input id="title" type="text" value="" /><a href="#" class="get-title-link inline-link">{{i18n "Suggest title"}}</a></div>
+        <label class="control-label">{{i18n "Question"}}</label>
+        <div class="controls"><input id="question" type="text" value="" /><input type="button" id="getans" class="btn inline-link" value="{{i18n "Get Answer"}}" /</div>
       </div>
       <div class="control-group">
-        <label class="control-label">{{i18n "Body"}}</label>
-        <div class="controls" id="editor"><textarea id="body" value="" class="input-xlarge"/></div>
+        <label class="control-label">{{i18n "Answer"}}</label>
+        <div class="controls"><textarea rows="20" id="body" value="" readonly="true"/></div>
       </div>
       <div class="control-group">
         <label class="control-label">{{i18n "Category"}}</label>
         <div class="controls">
           {{#each categories}}
           <label class="radio inline">
-            <input id="category_{{_id}}" type="checkbox" value="{{_id}}" name="category" /> {{name}}
+            <input id="category_{{_id}}" type="radio" value="{{_id}}" name="category" /> {{name}}
           </label>
           {{/each}}
         </div>
